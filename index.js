@@ -229,3 +229,24 @@ for (var i = 1; i <= int; i++){
     console.log(toPrint || i);
 }
 }
+
+/////Array Chunk
+let test = [1,2,3,4,5,6,7,8,9]
+function arrayChunk(array,size){
+    let result = []
+    //console.log(Math.ceil(array.length/size))
+    //console.log(array.length/size)
+    for(let i = 0;i<array.length;i++)
+    {
+      let last = result[result.length - 1]
+      if(!last || last.length === size){
+        result.push([array[i]])
+      }else
+      {
+          last.push(array[i])
+      }
+    }
+    console.log(result)
+}
+
+arrayChunk(test,4)
