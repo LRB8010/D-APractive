@@ -1,7 +1,6 @@
 let body = document.querySelector("body")
 
 
-
 ////////////////////////////////////////////// Reversed
 let reverseform = document.createElement("form")
 let reverseinput1 = document.createElement("input")
@@ -79,7 +78,13 @@ rvIInput1.addEventListener('change',function(e){
 
     rvIForm.addEventListener('submit',function(e){
         e.preventDefault()
-        reverseInt(rvIInputText)
+       if(parseInt(rvIInputText))
+        {
+            reverseInt(rvIInputText)
+        }else
+        {
+            alert("Please Type in a Number")
+        }
         })
 
 rvIForm.append(rvIInput1,rvIInput2)
@@ -167,4 +172,60 @@ function maxChar(str) {
     //This is achived by using a js method.
     //maxCharResult.innerText = Object.keys(char).reduce((a, b) => char[a] > char[b] ? a : b)
     
+}
+
+/////////This is for fizzbuzz
+let fizzTitle = document.createElement("h2")
+fizzTitle.innerText = "The famous fizzBuzz!!!"
+let fizzResults = document.createElement("p")
+let fizzForm = document.createElement("form")
+let fizzInput1 = document.createElement("input")
+let fizzInput2 = document.createElement("input")
+fizzInput2.type = "submit"
+let fizzInputText = ''
+fizzForm.append(fizzInput1,fizzInput2)
+body.append(fizzTitle,fizzForm,fizzResults)
+
+fizzForm.addEventListener("submit",function(e){
+    e.preventDefault()
+    if(parseInt(fizzInputText)){
+        fizzBuzz(fizzInputText)
+    }else{
+        alert("Please type a number")
+    }
+    
+})
+fizzInput1.addEventListener("change",function(e){
+    fizzInputText = e.target.value
+})
+
+function fizzBuzz(int){
+alert("Please Open Console")
+//simple solution
+    // for(let i = 1;i<=int;i++)
+    // {
+    //     if(i%5 == 0 && i%3 == 0)
+    //     {
+    //         console.log("fizzBuzz")
+    //     }else if (i%3 == 0) {
+    //         console.log("fizz")
+    //     } else if (i%5 == 0) {
+    //         console.log("Buzz")
+    //     } 
+    //     else {
+    //         console.log(i)
+    //     }
+    // }
+////optomized
+for (var i = 1; i <= int; i++){    
+    let toPrint = "";    
+    if (i % 3 == 0){        
+        toPrint += "fizz";    
+    }    
+    if (i % 5 == 0){
+        toPrint += "buzz";    
+    }    
+    // if the string is empty print i    
+    console.log(toPrint || i);
+}
 }
