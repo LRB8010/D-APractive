@@ -104,7 +104,7 @@ function reverseInt(string)
 ////////////////////Max Char
 let maxCharTitle = document.createElement("h2")
 let maxCharResult = document.createElement("p")
-maxCharTitle.innerText = 'How many duplicates!!!'
+maxCharTitle.innerText = 'Max Char!!!'
 let maxCharForm = document.createElement("form")
 let maxCharInput1 = document.createElement("input")
 let maxCharInput2 = document.createElement("input")
@@ -123,24 +123,48 @@ maxCharInput1.addEventListener("change",function(e){
     maxCharInputText = e.target.value
     console.log(maxCharInputText)
 })
+//This list all the chracters that have duplicates
+// function maxChar(string){
+//     maxCharResult.innerText = ''
+//     let results = {}
+//     let toLower = string.toLowerCase()
+//     for(let i = 0;i<toLower.length;i++)
+//     {
+//         results[toLower[i]]?results[toLower[i]] += 1 : results[toLower[i]] = 1
+//     }
+//     for(let obj in results)
+//     {
+//         if(results[obj] > 1){
+            
+//             maxCharResult.innerText = maxCharResult.innerText + ' ' + obj + ':'+ results[obj]
+            
+//         }
+//         console.log(obj)
+//     }
+    
+// }
 
-function maxChar(string){
-    maxCharResult.innerText = ''
-    let results = {}
-    let toLower = string.toLowerCase()
-    for(let i = 0;i<toLower.length;i++)
+//This finds the most used character
+function maxChar(str) {
+    let char = {}
+    for(let i = 0;i<str.length;i++)
     {
-        results[toLower[i]]?results[toLower[i]] += 1 : results[toLower[i]] = 1
+        char[str[i]]?char[str[i]] += 1:char[str[i]] = 1
     }
-    for(let obj in results)
-    {
-        if(results[obj] > 1){
-            
-            maxCharResult.innerText = maxCharResult.innerText + ' ' + obj + ':'+ results[obj]
-            
+    //This is achived without a js methods
+    let min = 0
+    let letter = ''
+
+    for(let obj in char){
+        if(char[obj]>min)
+        {
+            min = char[obj]
+            letter = obj
         }
-        console.log(obj)
     }
+    console.log(min,letter)
+    maxCharResult.innerText = letter
+    //This is achived by using a js method.
+    //maxCharResult.innerText = Object.keys(char).reduce((a, b) => char[a] > char[b] ? a : b)
     
 }
-
