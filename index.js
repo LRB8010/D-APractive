@@ -231,8 +231,36 @@ for (var i = 1; i <= int; i++){
 }
 
 /////Array Chunk
-let test = [1,2,3,4,5,6,7,8,9]
+let arrayTitle = document.createElement("h2")
+arrayTitle.innerText = "Array Chunking"
+let arrayResults = document.createElement("p")
+let arrayForm = document.createElement("form")
+let arrayInput1 = document.createElement("input")
+let arrayInput2 = document.createElement("input")
+arrayInput2.type = "submit"
+let arrayInputText = ''
+arrayForm.append(arrayInput1,arrayInput2)
+body.append(arrayTitle,arrayForm,arrayResults)
+let array = [1,2,3,4,5,6,7,8,9]
+
+arrayForm.addEventListener("submit",function(e){
+    e.preventDefault()
+    if(parseInt(arrayInputText)){
+        arrayChunk(array,parseInt(arrayInputText))
+    }else{
+        alert("Please Enter A Number")
+    }
+    
+
+})
+
+arrayInput1.addEventListener("change",function(e){
+    arrayInputText = e.target.value
+})
+
+
 function arrayChunk(array,size){
+    alert("Please Open Console")
     let result = []
     //console.log(Math.ceil(array.length/size))
     //console.log(array.length/size)
@@ -248,5 +276,3 @@ function arrayChunk(array,size){
     }
     console.log(result)
 }
-
-arrayChunk(test,4)
